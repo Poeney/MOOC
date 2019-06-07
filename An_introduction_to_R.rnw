@@ -1,0 +1,920 @@
+\documentclass{beamer}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{wrapfig}
+\usepackage{hyperref}
+\usepackage{alltt}
+\usetheme{CambridgeUS}
+\usecolortheme{beaver}
+\usepackage{tikz}
+\usepackage{graphics}
+\usepackage{epstopdf}
+\usepackage{graphicx}
+\usepackage{wasysym}%male,female symbol
+\usepackage{verbatim}
+\usepackage[latin1]{inputenc}
+\usepackage{fancyvrb}
+\usepackage{textcomp}
+\graphicspath{{c:/users/lduchate/docs/OC/onderwijs/expdesign/proefdierkunde/graphs/}}
+\defbeamertemplate{section page}{mine}[1][]{%
+  \begin{centering}
+    {\usebeamerfont{secname}\usebeamercolor[fg]{section name}#1}
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=12pt,center]{part title}
+      \usebeamerfont{section title}\insertsection\par
+    \end{beamercolorbox}
+  \end{centering}
+}
+
+\newcommand{\nologo}{\setbeamertemplate{logo}{}}
+
+%\AtBeginSection{\frame{\sectionpage}}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+\title[An introduction to R]{An introduction to R}
+
+%\subtitle[Balanced block designs]{Balanced block designs}
+\author[Dr. S. Bashir \& Dr. K. Goethals]{Dr. Saghir Bashir \& Dr. Klara Goethals}
+\institute[UGent]{Ghent University}
+\date[]{}
+\logo{\includegraphics[height=1.5cm]{logo.pdf}}
+
+%\setbeamertemplate{section page}[mine]
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+
+
+\section{Overview}
+
+\begin{frame}
+\begin{itemize}
+\item What is R and RStudio?
+\vspace{0.3cm}
+\item Installation of R and RStudio
+\vspace{0.3cm}
+\item R as a calculator
+\vspace{0.3cm}
+\item Some R concepts
+\vspace{0.3cm}
+\item R functions
+\end{itemize}
+\end{frame}
+\section{What is R and RStudio?}
+
+\begin{frame}{What is R?}
+\begin{itemize}
+\item Programming language
+\vspace{0.3cm}
+\item Open source
+\vspace{0.3cm}
+\item Software environment
+\vspace{0.3cm}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{What is RStudio?}
+\begin{itemize}
+\item Alternative implementation of R
+\end{itemize}
+\end{frame}
+
+\section{Installation of R and RStudio}
+
+
+\begin{frame}{Installation of R}
+\url{https://cran.r-project.org/}
+\end{frame}
+
+\begin{frame}{Installation of RStudio}
+\url{https://www.rstudio.com/}
+\end{frame}
+
+\section{R as a calculator}
+
+\begin{frame}[fragile]{R as calculator}
+<<>>=
+2+3
+(5+11)/2-9
+2^3
+@
+\end{frame}
+
+
+\section{Some R concepts}
+\subsection{Objects}
+
+\begin{frame}[fragile]{Scalars}
+\begin{itemize}
+\item Objects: scalars, vectors, datasets, \ldots
+\vspace{0.3cm}
+\item Creating objects: assignment operator  (\texttt{<-})
+<<>>=
+height<-173
+height
+@
+\vspace{0.3cm}
+\item Case sensitive
+<<>>=
+height<-173
+Height<-186
+height
+Height
+@
+\vspace{0.3cm}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Scalars}
+\begin{itemize}
+\item Calculations with objects
+<<>>=
+height<-173
+weight<-63
+BMI<-weight/(height/100)^2
+BMI
+@
+\vspace{0.3cm}
+\item Text objects
+<<>>=
+Greeting<-"Hello world!"
+Greeting
+@
+\vspace{0.3cm}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Vectors}
+\begin{itemize}
+\item Vectors: function \texttt{c()}
+\begin{itemize}
+\item A numeric vector
+<<>>=
+x<-c(1,1,2,3,5,8)
+x
+@
+\item A character vector
+<<>>=
+y<-c("Belgium","Portugal","Italy")
+y
+@
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Vectors}
+\begin{itemize}
+\item Calculating with vectors
+<<>>=
+x*2
+x^2
+x*x
+@
+\end{itemize}
+\end{frame}
+
+\section{R functions}
+\begin{frame}[fragile]{Functions for creating vectors}
+\begin{itemize}
+\item We already used one function to create a vector \texttt{c()}
+<<>>=
+x<-c(1,1,2,3,5,8)
+x
+@
+\item A function has a name and a list of arguments separated by a comma
+\vspace{0.3cm}
+\item Other functions for creating vectors
+\begin{itemize}
+\item Repeat vector (1,2,3) three times
+<<>>=
+x1<-rep(c(1,2,3),times=3)
+x1
+@
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Functions for creating vectors}
+\begin{itemize}
+\item[]
+\begin{itemize}
+\item Sequence from 1 to 5 incremented by 1
+<<>>=
+x2<-seq(from=1, to=5, by=1)
+x2
+@
+\item Sequence from 1 to 5 with length 5
+<<>>=
+x2<-seq(from=1, to=5, length.out=5)
+x2
+@
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Math functions}
+\begin{itemize}
+\item Trigonometric:
+\begin{columns}
+\begin{column}{0.5\textwidth}
+<<>>=
+sin(pi/2)
+cos(0)
+tan(0)
+@
+\end{column}
+\begin{column}{0.5\textwidth}
+<<>>=
+asin(1)
+acos(1)
+atan(0)
+@
+\end{column}
+\end{columns}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Math functions}
+\begin{itemize}
+\item Rounding
+\begin{columns}
+\begin{column}{0.5\textwidth}
+<<>>=
+round(8.6178,2)
+floor (8.6178)
+signif(8.6178,2)
+@
+\end{column}
+\begin{column}{0.5\textwidth}
+<<>>=
+sign(8.6178);
+sign(-8.6178)
+abs(-8.6178)
+@
+\end{column}
+\end{columns}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Math functions}
+\begin{itemize}
+\item Logarithms \& exponentials
+<<>>=
+exp(0)
+log(1)
+log10(1000)
+@
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Math functions}
+\begin{itemize}
+\item Others
+<<>>=
+sqrt(25)
+factorial(4)
+@
+\end{itemize}
+\end{frame}
+
+
+
+\end{document}
+
+\begin{frame}{The blocking principle}
+\begin{figure} [!h]
+\begin{center}
+\includegraphics[width=65mm,height=65mm]{puppys2.pdf}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{The blocking principle}
+\begin{figure} [!h]
+\begin{center}
+\includegraphics[width=65mm,height=65mm]{puppys3.pdf}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{The blocking principle}
+\begin{figure} [!h]
+\begin{center}
+\includegraphics[width=65mm,height=65mm]{puppys4.pdf}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{The blocking principle}
+\begin{figure} [!h]
+\begin{center}
+\includegraphics[width=90mm,height=50mm]{litter.pdf}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{The blocking principle}
+\begin{itemize}
+\item Group experimental units in homogeneous blocks
+\vspace{0.3cm}
+\item Reduce background variability
+\vspace{0.3cm}
+\item Blocking factor is known source of variability that is not of primary interest
+\vspace{0.3cm}
+\item Attribute treatment at random to experimental units within a block
+\vspace{0.3cm}
+\end{itemize}
+\end{frame}
+
+\subsection{Different block designs}
+
+\begin{frame}{Example: Rice plants}
+\begin{itemize}
+\item Effect of insertion of a gene into a rice plant
+\vspace{0.3cm}
+\item Three different types
+\begin{itemize}
+\item Wild type (W)
+\item Haploid type (H)
+\item Diploid type (D)
+\end{itemize}
+\vspace{0.3cm}
+\item Evaluation of growth for 1000-kernel weight (g)
+\vspace{0.3cm}
+\item Greenhouse can be split up in different plots and blocks
+\vspace{0.3cm}
+\item Temperature gradient from the door of the greenhouse at the left towards the right side of the greenhouse
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Randomised design}
+\begin{figure} [!h]
+\begin{center}
+\includegraphics[width=62mm,height=56mm]{figGM09_Ka.eps}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Randomised design}
+\begin{figure} [!h]
+\begin{center}
+\includegraphics[width=62mm,height=56mm]{figGM09_Kb.eps}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Randomised design}
+\begin{figure} [!h]
+\begin{center}
+\includegraphics[width=62mm,height=56mm]{figGM09_Kc.eps}
+\end{center}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{}
+\begin{figure} [!h]
+\begin{center}
+\includegraphics[width=93mm,height=42mm]{figGM09_Kd1.eps}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{}
+\begin{figure} [!h]
+\begin{center}
+\includegraphics[width=93mm,height=42mm]{figGM09_Kdtest.eps}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Randomised complete block design}
+\begin{figure} [!h]
+\begin{center}
+\includegraphics[width=93mm,height=42mm]{figGM09_Ke.eps}
+\end{center}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{}
+\begin{figure} [!h]
+\begin{center}
+\includegraphics[width=62mm,height=56mm]{figGM09_Kg2.eps}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{}
+\begin{figure} [!h]
+\begin{center}
+\includegraphics[width=62mm,height=56mm]{figGM09_Kh.eps}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Randomised complete block design with repeated measures}
+\begin{figure} [!h]
+\begin{center}
+\includegraphics[width=62mm,height=56mm]{figGM09_Kh.eps}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{}
+\begin{figure} [!h]
+\begin{center}
+\includegraphics[width=93mm,height=42mm]{figGM09_Ki.eps}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Randomised complete block design with repeated measures\\
+Randomised generalised complete block design}
+\begin{figure} [!h]
+\begin{center}
+\includegraphics[width=93mm,height=42mm]{figGM09_Kj.eps}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Randomised complete block design with repeated measures\\
+Randomised generalised complete block design\\
+Randomised complete block design}
+\begin{figure} [!h]
+\begin{center}
+\includegraphics[width=120mm,height=40mm]{figGM09_Kk.eps}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Randomised complete block design with repeated measures\\
+Randomised generalised complete block design\\
+Randomised complete block design}
+\begin{figure} [!h]
+\begin{center}
+\includegraphics[width=120mm,height=40mm]{figGM09_Kl.eps}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{}
+\begin{figure} [!h]
+\begin{center}
+\includegraphics[width=80mm,height=60mm]{figGMU_K_presentatie1.eps}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Balanced incomplete block design}
+\begin{figure} [!h]
+\begin{center}
+\includegraphics[width=80mm,height=60mm]{figGMU_K_presentatie2.eps}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{}
+\begin{figure} [!h]
+\begin{center}
+\includegraphics[width=60mm,height=60mm]{figGMU_K_presentatie3.eps}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Balanced block design with repetition of W}
+\begin{figure} [!h]
+\begin{center}
+\includegraphics[width=60mm,height=60mm]{figGMU_K_presentatie4.eps}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{}
+\begin{figure} [!h]
+\begin{center}
+\includegraphics[width=62mm,height=56mm]{figGMB_presentation1.eps}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Balanced block design with different block sizes}
+\begin{figure} [!h]
+\begin{center}
+\includegraphics[width=62mm,height=56mm]{figGMB_presentation2.eps}
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Summary}
+\begin{itemize}
+\item RCB and GCB restrictive designs
+\begin{itemize}
+\item Each block needs to contain exactly the same number of experimental units
+\item Number of experimental units needs to be a multiple of number of treatments
+\end{itemize}
+\vspace{0.3cm}
+\item Balanced designs
+\begin{itemize}
+\item Whenever we can not deduce information for the treatment effect by comparing blocks
+\item This is ok when the proportion of occurence of each treatment is the same in each block
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\subsection{ANOVA for balanced block designs}
+
+\begin{frame}
+\begin{center}
+\bf\LARGE
+\color{red}{ANOVA for balanced block designs}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{Factor effects model for RCB}
+\begin{itemize}
+\item Assume no interaction between treatment and block
+\vspace{0.3cm}
+\item Model
+$$
+Y_{ij}=\mu_{..}+\alpha_i +\beta_j + e_{ij} \label{eqrcb}
+$$
+where
+$$\begin{array}{ll}
+\mu_{..} & \textnormal{ the overall population mean  (constant)}\vspace{0.3cm}\\
+\alpha_i & \textnormal{ main effect of level } i \textnormal{ of factor } A \,(\textnormal{treatment}),\quad i=1,\ldots,a \\
+&\textnormal{ constants with restriction } \sum\limits_{i=1}^a \alpha_i=0 \vspace{0.3cm}\\
+\beta_j &  \textnormal{ effect of block } j,\quad j=1,\ldots,b  \\
+&\textnormal{ constants with restriction } \sum\limits_{j=1}^b \beta_j=0\vspace{0.3cm}\\
+e_{ij} & \textnormal{ independent random error term } \sim \mathrm{N}(0,\sigma^2)
+\end{array}$$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Factor effects model for RCB}
+\begin{itemize}
+\item Decomposition of sum of squares
+$$
+\textnormal{SS}_{\textnormal{tot}}=\textnormal{SS}_{\textnormal{trt}}+\textnormal{SS}_{\textnormal{block}}+\textnormal{SS}_{\textnormal{err}}
+$$
+with
+\begin{eqnarray*}
+\textnormal{SS}_{\textnormal{tot}}&=&\sum\limits_{i=1}^{a}\sum\limits_{j=1}^{b}\left(Y_{ij}-\bar{Y}_{..}\right)^2\\
+\textnormal{SS}_{\textnormal{trt}}&=&\sum\limits_{i=1}^{a} b \left(\bar{Y}_{i.}-\bar{Y}_{..}\right)^2 \\
+\textnormal{SS}_{\textnormal{block}}&=&\sum\limits_{j=1}^{b} a \left(\bar{Y}_{.j}-\bar{Y}_{..}\right)^2 \\
+\textnormal{SS}_{\textnormal{err}}&=&\sum\limits_{i=1}^{a}\sum\limits_{j=1}^{b}\left(Y_{ij}-\bar{Y}_{i.}-\bar{Y}_{.j}+\bar{Y}_{..}\right)^2
+\end{eqnarray*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Factor effects model for RCB}
+\begin{itemize}
+\item Mean sum of squares
+\begin{eqnarray*}
+\textnormal{MS}_{\textnormal{tot}}&=&\frac{\textnormal{SS}_{\textnormal{tot}}}{ab-1}\\
+\textnormal{MS}_{\textnormal{trt}}&=&\frac{\textnormal{SS}_{\textnormal{trt}}}{a-1}\\
+\textnormal{MS}_{\textnormal{block}}&=&\frac{\textnormal{SS}_{\textnormal{block}}}{b-1}\\
+\textnormal{MS}_{\textnormal{err}}&=&\frac{\textnormal{SS}_{\textnormal{err}}}{(a-1)(b-1)}
+\end{eqnarray*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Factor effects model for RCB}
+\begin{itemize}
+\item Expected values
+\begin{eqnarray}
+\textnormal{E}(\textnormal{MS}_{\textnormal{trt}})&=& \sigma^2+ \frac{1}{a-1} \sum\limits_{i=1}^a b \alpha_i^2 \nonumber\\
+\textnormal{E}(\textnormal{MS}_{\textnormal{block}})&=&\sigma^2+ \frac{1}{b-1} \sum\limits_{j=1}^b a  \beta_j^2 \nonumber\\
+\textnormal{E}(\textnormal{MS}_{\textnormal{err}})&=&\sigma^2\nonumber
+\end{eqnarray}
+\item test statistic to test $\quad$ $\textnormal{H}_0: \alpha_1=\alpha_2=\ldots=\alpha_a=0 $
+\begin{displaymath}
+F^*=\frac{\textnormal{MS}_{\textnormal{trt}}}{\textnormal{MS}_{\textnormal{err}}}\sim \textnormal{F}_{\textnormal{a}-1,(\textnormal{a}-1)(\textnormal{b}-1)}
+\end{displaymath}
+\item P-value
+$$\textnormal{P}(\textnormal{F}_{\textnormal{a}-1,(\textnormal{a}-1)(\textnormal{b}-1)} \geq f^*)$$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example RCB}
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{ccc}
+\\
+\hline \hline
+Block	&	Plant type	&	1000-kernel weight (g)  	\\
+\hline
+1 & W & 22.4\\
+1 & H & 24.8\\
+1 & D & 25.2\\
+2 & W & 27.3\\
+2 & H & 28.6\\
+2 & D & 28.4\\
+3 & W & 24.5\\
+3 & H & 25.8\\
+3 & D & 26.2\\
+4 & W & 23.3\\
+4 & H & 23.5\\
+4 & D & 24.1\\
+\hline \hline
+\end{tabular}
+\end{center}
+\end{table}
+\end{frame}
+
+\begin{frame}[fragile]{Example RCB}
+<<size="small">>=
+setwd("Z:/common/MOOC/Balanced block designs")
+rcb <- read.delim("RicePlants_RCB.txt")
+str(rcb)
+rcb$Block <- factor(rcb$Block)
+rcb$Type <- relevel(rcb$Type, "W")
+@
+\end{frame}
+
+\begin{frame}[fragile]{Example RCB}
+<<size="small">>=
+anova(lm(Weight ~ Block + Type, rcb))
+@
+\end{frame}
+
+
+\begin{frame}[fragile]{Example RCB: What if we did not make use of blocks?}
+<<size="small">>=
+anova(lm(Weight ~ Type, rcb))
+@
+\end{frame}
+
+\begin{frame}{Example RCB - ANOVA table: What if we did not make use of blocks?}
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{lccccc}
+\\
+\hline \hline
+Term & SS & df & MS & $f^{*}$ & P(F$\geq f^{*}$) \\
+\hline
+Plant type & 5.787 & 2 & 2.893 & 0.69 & 0.5263 \\
+Error  & 37.743 & 9 & 4.194\\
+Total  & 43.529 & 11 & 3.957\\
+\hline \hline
+\end{tabular}
+\end{center}
+\end{table}
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{lccccc}
+\\
+\hline \hline
+Term & SS & df & MS & $f^{*}$ & P(F$\geq f^{*}$) \\
+\hline
+Plant type & 5.787 & 2 & 2.893 & 10.17 & 0.0118 \\
+Block & 36.036 & 3 & 12.012 & 42.23 & 0.0002\\
+Error  & 1.707 & 6 & 0.284\\
+Total  & 43.529 & 11 & 3.957\\
+\hline \hline
+\end{tabular}
+\end{center}
+\end{table}
+\end{frame}
+
+\begin{frame}{Factor effects model for GCB}
+\begin{itemize}
+\item Block-treatment interaction can be added to the model
+\vspace{0.3cm}
+\item Model
+$$
+Y_{ijk}= \mu_{..}+\alpha_i +\beta_j + (\alpha \beta)_{ij} +e_{ijk} \label{eqgcb}
+$$
+
+where
+\small
+$$\begin{array}{ll}
+\mu_{..} & \textnormal{ the overall population mean  (constant)}\\
+\alpha_i & \textnormal{ main effect of level } i \textnormal{ of factor } A \,\textnormal{treatment},\quad i=1,\ldots,a \\
+&\textnormal{ constants with restriction } \sum\limits_{i=1}^a \alpha_i=0 \\
+\beta_j &  \textnormal{ effect of block } j, \quad j=1,\ldots,b  \\
+&\textnormal{ constants with restriction } \sum\limits_{j=1}^b \beta_j=0\\
+(\alpha \beta)_{ij} &  \textnormal{ interaction between level } i \textnormal{ of factor } A \textnormal{ and  block } j  \\
+&\textnormal{ constants with restrictions } \sum\limits_{i=1}^a (\alpha \beta)_{ij}=0 \quad \sum\limits_{j=1}^b (\alpha \beta)_{ij}=0\\
+e_{ijk} & \textnormal{ independent random error term } \sim \mathrm{N}(0,\sigma^2), \quad k=1,\ldots,n
+\end{array}$$\end{itemize}
+\end{frame}
+
+\begin{frame}{Factor effects model for GCB}
+\begin{itemize}
+\item Decomposition of sum of squares
+$$
+\textnormal{SS}_{\textnormal{tot}}=\textnormal{SS}_{\textnormal{trt}}+\textnormal{SS}_{\textnormal{block}}+\textnormal{SS}_{\textnormal{trt*block}}+\textnormal{SS}_{\textnormal{err}}
+$$
+with
+\small
+\begin{eqnarray*}
+\textnormal{SS}_{\textnormal{tot}}&=&\sum\limits_{i=1}^a \sum\limits_{j=1}^{b} \sum\limits_{k=1}^{n}  \left(Y_{ijk}-\bar{Y}_{...} \right)^2\\
+\textnormal{SS}_{\textnormal{trt}}&=&nb \sum\limits_{i=1}^a  \left(\bar{Y}_{i..}-\bar{Y}_{...}  \right)^2\\
+\textnormal{SS}_{\textnormal{block}}&=&na \sum\limits_{j=1}^b  \left(\bar{Y}_{.j.}-\bar{Y}_{...}  \right)^2 \\
+\textnormal{SS}_{\textnormal{trt*block}}&=&n\sum\limits_{i=1}^a\sum\limits_{j=1}^b\left(\bar{Y}_{ij.}-\bar{Y}_{i..}-\bar{Y}_{.j.}+\bar{Y}_{...}  \right)^2\\
+\textnormal{SS}_{\textnormal{err}}&=&\sum\limits_{i=1}^a \sum\limits_{j=1}^{b} \sum\limits_{k=1}^{n}  \left( Y_{ijk} - \bar{Y}_{ij.} \right)^2
+\end{eqnarray*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Factor effects model for GCB}
+\begin{itemize}
+\item Mean sum of squares
+\addtolength{\jot}{0.2cm}
+\begin{eqnarray*}
+\textnormal{MS}_{\textnormal{tot}}&=&\frac{\textnormal{SS}_{\textnormal{tot}}}{nab-1}\\
+\textnormal{MS}_{\textnormal{trt}}&=&\frac{\textnormal{SS}_{\textnormal{trt}}}{a-1}\\
+\textnormal{MS}_{\textnormal{block}}&=&\frac{\textnormal{SS}_{\textnormal{block}}}{b-1}\\
+\textnormal{MS}_{\textnormal{trt*block}}&=&\frac{\textnormal{SS}_{\textnormal{trt*block}}}{(a-1)(b-1)}\\
+\textnormal{MS}_{\textnormal{err}}&=&\frac{\textnormal{SS}_{\textnormal{err}}}{(n-1)ab}
+\end{eqnarray*}
+\addtolength{\jot}{-0.2cm}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Factor effects model for GCB}
+\begin{itemize}
+\item Expected values
+\small
+\vspace{-0.5cm}
+\begin{eqnarray}
+\textnormal{E}(\textnormal{MS}_{\textnormal{trt}})&=&  \sigma^2 + nb \frac{\sum\limits_{i=1}^a \alpha_i^2}{a-1} \nonumber\\
+\textnormal{E}(\textnormal{MS}_{\textnormal{block}})&=&\sigma^2 + na \frac{\sum\limits_{j=1}^b \beta_j^2}{b-1} \nonumber\\
+\textnormal{E}(\textnormal{MS}_{\textnormal{trt*block}})&=& \sigma^2 + n \frac{\sum\limits_{i=1}^a \sum\limits_{j=1}^b (\alpha \beta)_{ij}^2}{(a-1)(b-1)}\nonumber\\
+\textnormal{E}(\textnormal{MS}_{\textnormal{err}})&=&\sigma^2\nonumber
+\end{eqnarray}
+\normalsize
+\item Test statistic to test $\quad$ $\textnormal{H}_0: \alpha_1=\alpha_2=\ldots=\alpha_a=0 $
+\small
+\begin{displaymath}
+F^*=\frac{\textnormal{MS}_{\textnormal{trt}}}{\textnormal{MS}_{\textnormal{err}}}\sim \textnormal{F}_{\textnormal{a}-1,(\textnormal{n}-1)\textnormal{ab}}
+\end{displaymath}
+\normalsize
+\item P-value:\small $\quad \textnormal{P}(\textnormal{F}_{\textnormal{a}-1,(\textnormal{n}-1)\textnormal{ab}} \geq f^*)$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example GCB}
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{cccc}
+\hline\hline
+& & \multicolumn{2}{c}{1000-kernel weight (g)}\\
+\hline
+Block	&	Plant type	&	Observation 1 & Observation 2  	\\
+\hline
+1 & W & 22.4 & 23.0\\
+1 & H & 24.8 & 25.2\\
+1 & D & 25.2 & 25.6\\
+2 & W & 27.3 & 26.3\\
+2 & H & 28.6 & 27.5\\
+2 & D & 28.4 & 29.3\\
+3 & W & 24.5 & 24.8\\
+3 & H & 25.8 & 25.9\\
+3 & D & 26.2 & 25.3\\
+4 & W & 23.3 & 23.9\\
+4 & H & 23.5 & 23.9\\
+4 & D & 24.1 & 26.2\\
+\hline \hline
+\end{tabular}
+\end{center}
+\end{table}
+\end{frame}
+
+\begin{frame}[fragile]{Example RCB}
+<<size="small">>=
+setwd("Z:/common/MOOC/Balanced block designs")
+gcb <- read.delim("RicePlants_GCB.txt")
+str(gcb)
+gcb$Block <- factor(gcb$Block)
+gcb$Type <- relevel(gcb$Type, "W")
+@
+\end{frame}
+
+\begin{frame}[fragile]{Example RCB}
+<<size="small">>=
+anova(lm(Weight ~ Block * Type, gcb))
+@
+\end{frame}
+
+
+\begin{frame}[fragile]{Example RCB: What if we did not make use of blocks?}
+<<size="small">>=
+anova(lm(Weight ~ Type, gcb))
+@
+\end{frame}
+
+
+\begin{frame}{Example GCB - ANOVA table: What if we did not make use of blocks?}
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{lccccc}
+\\
+\hline \hline
+Term & SS & df & MS & $f^{*}$ & P(F$\geq f^{*}$) \\
+\hline
+Plant type & 14.131 & 2 & 7.065 & 2.42& 0.1136 \\
+Error  & 61.388 & 21 & 2.923\\
+Total  & 75.518 & 23 & 3.283\\
+\hline \hline
+\end{tabular}
+\end{center}
+\end{table}
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{lccccc}
+\\
+\hline \hline
+Term & SS & df & MS & $f^{*}$ & P(F$\geq f^{*}$) \\
+\hline
+Plant type & 14.131 & 2 & 7.065 & 17.77& 0.0003 \\
+Block & 53.202 & 3 & 17.734 & 44.61 & $<$0.0001\\
+Plant type*Block & 3.416 & 6 & 0.569 & 1.43 & 0.280\\
+Error  & 4.770 & 12 & 0.397\\
+Total  & 75.518 & 23 & 3.283\\
+\hline \hline
+\end{tabular}
+\end{center}
+\end{table}
+\end{frame}
+
+
+
+
+
+\section{R as a calculator}
+
+\begin{frame}[fragile]{R as calculator}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+<<>>=
+2+3
+(5+11)/2-9
+2^3
+sqrt(16)
+@
+\end{column}
+\begin{column}{0.5\textwidth}
+<<>>=
+log(1)
+exp(0)
+round(15.91531, 2)
+signif(7461, 2)
+@
+\end{column}
+\end{columns}
+\end{frame}
